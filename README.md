@@ -1,4 +1,4 @@
-# Карточка стоит — плагин Agents Hub
+# Stand still — плагин Agents Hub
 
 Агент задал вопрос с вариантами ответа, вы читаете карточку, а лента прыгает: новые сообщения встают над карточкой,
 полоса очереди под лентой то появляется, то пропадает. С плагином карточка вопроса держится на месте, пока она перед
@@ -7,17 +7,17 @@
 
 Только страница хаба: плагин ничего не шлёт и ничего не хранит.
 
-Поставить: «Настройки» → «Плагины» → «Каталог» → steady-card, или ссылкой на этот репозиторий.
+Поставить: «Настройки» → «Плагины» → «Каталог» → stand-still, или ссылкой на этот репозиторий.
 
 ## Тест
 
 Тест — в Chrome на странице хаба, из папки кода хаба:
 
 ```
-cp tests/test_steady.py <код хаба>/tests/
-cd <код хаба> && STEADY_PLUGIN=<папка плагина> python3 tools/test.py tests.test_steady.Steady.test_the_question_being_read_stays_put_when_messages_arrive
+cp tests/test_stand_still.py <код хаба>/tests/
+cd <код хаба> && STAND_STILL_PLUGIN=<папка плагина> python3 tools/test.py tests.test_stand_still.StandStill.test_the_question_being_read_stays_put_when_messages_arrive
 ```
 
-`STEADY_OFF=1` — тот же тест без плагина: на хабе без этой правки он падает.
+`STAND_STILL_OFF=1` — тот же тест без плагина: на хабе без этой правки он падает.
 
 Код — MIT.

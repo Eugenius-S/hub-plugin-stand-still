@@ -1,6 +1,6 @@
 """Плагин на странице хаба в Chrome: карточка вопроса стоит, пока приходят сообщения. Запуск — из папки кода хаба
 (нужен его tests.test_web_e2e и тестовый Chrome): скопировать файл в <код хаба>/tests/ и `python3 tools/test.py
-tests.test_steady.Steady.test_the_question_being_read_stays_put_when_messages_arrive`. STEADY_OFF=1 — без плагина (на коде без своей правки тест должен упасть)."""
+tests.test_stand_still.StandStill.test_the_question_being_read_stays_put_when_messages_arrive`. STAND_STILL_OFF=1 — без плагина (на коде без своей правки тест должен упасть)."""
 import tests  # noqa: F401
 import json
 import os
@@ -8,16 +8,16 @@ from unittest import mock
 
 from tests import test_web_e2e
 
-PLUGIN = os.environ.get("STEADY_PLUGIN") or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PLUGIN = os.environ.get("STAND_STILL_PLUGIN") or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-class Steady(test_web_e2e.PageInChrome):
+class StandStill(test_web_e2e.PageInChrome):
     def plugin(self):
-        if os.environ.get("STEADY_OFF"):
+        if os.environ.get("STAND_STILL_OFF"):
             return
         cfg = os.path.join(self.state, "hub.json")
         with open(cfg, "w") as f:
-            json.dump({"extensions": {"steady-card": {"path": PLUGIN, "web": "main.js"}}}, f)
+            json.dump({"extensions": {"stand-still": {"path": PLUGIN, "web": "main.js"}}}, f)
         env = mock.patch.dict(os.environ, {"HUB_CONFIG": cfg})
         env.start()
         self.addCleanup(env.stop)
