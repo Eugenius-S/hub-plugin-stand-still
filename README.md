@@ -21,3 +21,5 @@ cd <код хаба> && STAND_STILL_PLUGIN=<папка плагина> python3 t
 `STAND_STILL_OFF=1` — тот же тест без плагина: на хабе без этой правки он падает.
 
 Код — MIT.
+
+Иконка — [3D Fluency](https://icons8.com/icons/3d-fluency) от Icons8.
